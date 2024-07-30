@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/faculty"
+    android:paddingVertical="0dp">
+
+    <TextView
+        android:id="@+id/tvFakultas"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:text="Fakultas"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tvKetersediaanParkir"
+        app:layout_constraintHorizontal_bias="0"/>
+
+    <TextView
+        android:id="@+id/tvKetersediaanParkir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="10/10"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvFakultas"
+        android:paddingEnd="16dp"/>
+
+    <!-- Tambahkan Button Detail di bawah TextView tvKetersediaanParkir -->
+    <Button
+        android:id="@+id/btnDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Detail"
+        app:layout_constraintTop_toBottomOf="@id/tvKetersediaanParkir"
+        app:layout_constraintStart_toStartOf="@id/tvKetersediaanParkir"
+        app:layout_constraintEnd_toEndOf="@id/tvKetersediaanParkir"
+        android:layout_marginTop="8dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
