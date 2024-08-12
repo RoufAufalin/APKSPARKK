@@ -81,24 +81,56 @@
             android:layout_height="wrap_content"
             android:inputType="textPassword"/>
 
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Confirm Password"
+            android:text="Alamat"
             android:alpha="0.7"
             android:textStyle="bold"/>
 
-        <com.example.bottomnavyt.costumview.PasswordText
-            android:id="@+id/confirm_password"
+        <EditText
+            android:id="@+id/AddressEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"/>
+            android:inputType="text"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nomor HP"
+            android:alpha="0.7"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/PhoneEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"/>
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Confirm Password"-->
+<!--            android:alpha="0.7"-->
+<!--            android:textStyle="bold"/>-->
+
+<!--        <com.example.bottomnavyt.costumview.PasswordText-->
+<!--            android:id="@+id/confirm_password"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:inputType="textPassword"/>-->
 
         <Button
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"
             android:layout_height="58dp"
             android:layout_marginTop="24dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:foreground="?android:attr/selectableItemBackground"
             android:textColor="@color/white"
             android:layout_gravity="center"
             android:backgroundTint="@color/bluespark"
@@ -132,5 +164,17 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="10dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

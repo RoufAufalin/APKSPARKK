@@ -17,8 +17,6 @@ class LoginViewModel(private val Repo: Repository): ViewModel() {
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading : LiveData<Boolean> =  _isLoading
 
-//    fun postLogin(email: String, pass: String) = storyRepo.login(email, pass)
-
     fun login (email: String, pass: String) {
         viewModelScope.launch {
             _loginResult.value = Result.Loading

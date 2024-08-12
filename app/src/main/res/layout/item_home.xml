@@ -6,6 +6,7 @@
     android:id="@+id/list_item"
     android:clickable="true"
     android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
@@ -35,6 +36,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/calibri"
                     android:text="Area Rektorat"
+                    android:textSize="sp"
                     android:textColor="#000000"
                     android:textStyle="bold" />
 
@@ -59,59 +61,59 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="40"
-                android:gravity="center"
-                android:orientation="vertical">
+<!--            <LinearLayout-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="40"-->
+<!--                android:gravity="center"-->
+<!--                android:orientation="vertical">-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="end">
+<!--&lt;!&ndash;                <LinearLayout&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:orientation="horizontal"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:gravity="end">&ndash;&gt;-->
 
-                    <TextView
-                        android:id="@+id/SlotKosong"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/calibri"
-                        android:text="2"
-                        android:textColor="#f5a622"
-                        android:textSize="24sp"
-                        android:textStyle="bold" />
+<!--&lt;!&ndash;                    <TextView&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:id="@+id/SlotKosong"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:fontFamily="@font/calibri"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:text="2"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:textColor="#f5a622"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:textSize="24sp"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:textStyle="bold" />&ndash;&gt;-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/calibri"
-                        android:text="/"
-                        android:textColor="#f5a622"
-                        android:textSize="24sp"
-                        android:textStyle="bold" />
+<!--&lt;!&ndash;                    <TextView&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:fontFamily="@font/calibri"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:text="/"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:textColor="#f5a622"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:textSize="24sp"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:textStyle="bold" />&ndash;&gt;-->
 
-                    <TextView
-                        android:id="@+id/TotalSlot"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/calibri"
-                        android:text="30"
-                        android:textColor="#f5a622"
-                        android:textSize="24sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
+<!--&lt;!&ndash;                    <TextView&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:id="@+id/TotalSlot"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:fontFamily="@font/calibri"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:text="30"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:textColor="#f5a622"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:textSize="24sp"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:textStyle="bold" />&ndash;&gt;-->
+<!--&lt;!&ndash;                </LinearLayout>&ndash;&gt;-->
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="4dp"
-                    android:fontFamily="@font/calibri"
-                    android:text="Ketersediaan Parkir"
-                    android:textAlignment="textEnd"
-                    android:textColor="#b3b3b3" />
-            </LinearLayout>
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="4dp"-->
+<!--                    android:layout_marginBottom="4dp"-->
+<!--                    android:fontFamily="@font/calibri"-->
+<!--                    android:text="Ketersediaan Parkir"-->
+<!--                    android:textAlignment="textEnd"-->
+<!--                    android:textColor="#b3b3b3" />-->
+<!--            </LinearLayout>-->
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

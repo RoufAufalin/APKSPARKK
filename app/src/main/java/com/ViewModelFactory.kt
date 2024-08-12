@@ -7,6 +7,7 @@ import com.data.Repository
 import com.di.Injection
 import com.ui.bookedform.FormViewModel
 import com.ui.login.LoginViewModel
+import com.ui.register.RegisterViewModel
 
 class ViewModelFactory private constructor(private val repository: Repository) :
     ViewModelProvider.NewInstanceFactory() {
@@ -16,9 +17,9 @@ class ViewModelFactory private constructor(private val repository: Repository) :
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
                 return LoginViewModel(repository) as T
             }
-//            modelClass.isAssignableFrom(RegisterViewModel::class.java) -> {
-//                return RegisterViewModel(repository) as T
-//            }
+            modelClass.isAssignableFrom(RegisterViewModel::class.java) -> {
+                return RegisterViewModel(repository) as T
+            }
 
             modelClass.isAssignableFrom(FormViewModel::class.java) -> {
                 return FormViewModel(repository) as T

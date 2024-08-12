@@ -44,10 +44,9 @@ class Repository(private val apiService: ApiService, private val context: Contex
         }
     }
 
-    suspend fun register(name: String, password: String, email: String) : Result<LoginResponse> {
+    suspend fun register(name: String, email: String, password: String, address: String, noHp: String) : Result<LoginResponse> {
         return try {
-            val response = apiService.login(email, password)
-            userPreferences.saveUser(response.accessToken, response.expiresIn)
+            val response = apiService.register(name, email, password, address, noHp)
             Log.d("Repository", "Response received: $response")
             Result.Success(response)
         } catch (e: Exception) {
