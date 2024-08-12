@@ -44,6 +44,18 @@ class Repository(private val apiService: ApiService, private val context: Contex
         }
     }
 
+    suspend fun register(name: String, password: String, email: String) : Result<LoginResponse> {
+        return try {
+            val response = apiService.login(email, password)
+            userPreferences.saveUser(response.accessToken, response.expiresIn)
+            Log.d("Repository", "Response received: $response")
+            Result.Success(response)
+        } catch (e: Exception) {
+            Result.Error(e, e.message ?: "Unknown error")
+        }
+    }
+
+
     fun logout(){
         userPreferences.clearUser()
     }
@@ -70,4 +82,5 @@ class Repository(private val apiService: ApiService, private val context: Contex
             emit(Result.Error(e, e.message ?: "Failed to load data"))
         }
     }
+
 }

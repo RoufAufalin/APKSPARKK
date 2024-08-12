@@ -34,7 +34,7 @@ class ApiConfig {
                 .build()
 
             val retrofit = Retrofit.Builder()
-                .baseUrl("https://sparka-be-evfpthsuvq-et.a.run.app/")
+                .baseUrl("https://sparka-be-evfpthsuvq-et.a.run.app")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build()

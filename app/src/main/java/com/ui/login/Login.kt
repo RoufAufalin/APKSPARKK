@@ -12,6 +12,7 @@ import com.data.UserPreferences
 import com.example.bottomnavyt.MainActivity
 import com.example.bottomnavyt.databinding.ActivityLoginBinding
 import com.data.Result
+import com.ui.register.RegisterActivity
 
 class Login : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
@@ -68,6 +69,11 @@ class Login : AppCompatActivity() {
             }
 
             loginViewModel.login(email, password)
+        }
+
+        binding.txtRegister.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
         }
     }
 

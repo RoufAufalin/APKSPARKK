@@ -31,4 +31,11 @@ interface ApiService {
         @Field("id_slot") idSlot: String
     ): Call<BookedResponse>
 
+    @POST("api/register")
+    fun register(
+        @Field("nama") nama: String,
+        @Field("email") email: String,
+        @Field("password") password: String
+    ): Call<LoginResponse>
+
 }
