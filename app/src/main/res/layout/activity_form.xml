@@ -127,7 +127,6 @@
                                     android:id="@+id/nomorPlatField"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:drawableStart="@drawable/ic_location_on_light_blue_24dp"
                                     android:drawablePadding="16dp"
                                     android:fontFamily="@font/calibri"
                                     android:hint="Nomor Plat"
@@ -147,7 +146,6 @@
                                     android:id="@+id/namaPemesanField"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:drawableStart="@drawable/ic_location_on_light_blue_24dp"
                                     android:drawablePadding="16dp"
                                     android:fontFamily="@font/calibri"
                                     android:hint="Nama Pemesan"
@@ -167,7 +165,6 @@
                                     android:id="@+id/jenisMobilField"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:drawableStart="@drawable/ic_location_on_light_blue_24dp"
                                     android:drawablePadding="16dp"
                                     android:fontFamily="@font/calibri"
                                     android:hint="Jenis Mobil"
@@ -187,51 +184,10 @@
                                     android:id="@+id/tempatParkirField"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:drawableStart="@drawable/ic_location_on_light_blue_24dp"
                                     android:drawablePadding="16dp"
                                     android:fontFamily="@font/calibri"
                                     android:hint="Tempat Parkir"
                                     android:inputType="text"
-                                    android:maxLines="1"
-                                    android:textColor="@android:color/black"
-                                    android:textSize="16sp" />
-                            </com.google.android.material.textfield.TextInputLayout>
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="8dp"
-                                android:textColorHint="#FF8A99AF">
-
-                                <EditText
-                                    android:id="@+id/dateField"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:drawableStart="@drawable/ic_date_range_light_blue_24dp"
-                                    android:drawablePadding="16dp"
-                                    android:fontFamily="@font/calibri"
-                                    android:hint="Select Date"
-                                    android:inputType="date"
-                                    android:maxLines="1"
-                                    android:textColor="@android:color/black"
-                                    android:textSize="16sp" />
-                            </com.google.android.material.textfield.TextInputLayout>
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="8dp"
-                                android:textColorHint="#FF8A99AF">
-
-                                <EditText
-                                    android:id="@+id/timeRangeField"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:drawableStart="@drawable/ic_location_on_light_blue_24dp"
-                                    android:drawablePadding="16dp"
-                                    android:fontFamily="@font/calibri"
-                                    android:hint="Select Time Range"
-                                    android:inputType="time"
                                     android:maxLines="1"
                                     android:textColor="@android:color/black"
                                     android:textSize="16sp" />

@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.data.response.LoginResponse
 import com.data.response.SlotParkirResponse
+import com.data.response.SlotResponse
 import com.data.retrofit.ApiService
 import com.ui.login.Login
 
@@ -63,14 +64,12 @@ class Repository(private val apiService: ApiService, private val context: Contex
         platNomor: String,
         namaPemesan: String,
         jenisMobil: String,
-        tanggalMasuk: String,
-        tanggalKeluar: String,
         idSlot: String
-    ) = apiService.bookSlot(platNomor, namaPemesan, jenisMobil, tanggalMasuk, tanggalKeluar, idSlot)
+    ) = apiService.bookSlot(platNomor, namaPemesan, jenisMobil, idSlot)
 
 
 
-    fun getSlotParkir(): LiveData<Result<SlotParkirResponse>> = liveData {
+    fun getSlotParkir(): LiveData<Result<SlotResponse>> = liveData {
         emit(Result.Loading)
         try {
             val response = apiService.SlotAll()

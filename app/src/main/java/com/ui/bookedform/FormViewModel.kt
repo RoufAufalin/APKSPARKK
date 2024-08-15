@@ -27,13 +27,11 @@ class FormViewModel(private val repository: Repository) : ViewModel() {
         platNomor: String,
         namaPemesan: String,
         jenisMobil: String,
-        tanggalMasuk: String,
-        tanggalKeluar: String,
         idSlot: String
     ) {
         _loading.value = true
         viewModelScope.launch {
-            repository.bookSlot(platNomor, namaPemesan, jenisMobil, tanggalMasuk, tanggalKeluar, idSlot)
+            repository.bookSlot(platNomor, namaPemesan, jenisMobil, idSlot)
                 .enqueue(object : Callback<BookedResponse> {
                     override fun onResponse(call: Call<BookedResponse>, response: Response<BookedResponse>) {
                         _loading.value = false

@@ -8,8 +8,10 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.ui.bookedform.Form
 import com.example.bottomnavyt.R
+import com.example.bottomnavyt.databinding.ActivityPilihBinding
 
 class pilih : AppCompatActivity() {
+
 
     data class Seat(var state: Int)
 
@@ -21,13 +23,16 @@ class pilih : AppCompatActivity() {
 
     private lateinit var seats: MutableMap<String, Seat>
     private lateinit var seatImageViews: MutableMap<String, ImageView>
+    private lateinit var binding: ActivityPilihBinding
     private var currentlySelectedSeat: Pair<String, ImageView>? = null
     var btnparkir: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        binding  = ActivityPilihBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_pilih)
-        btnparkir = findViewById<Button>(R.id.btnpilih)
+        setContentView(binding.root)
+
+        btnparkir = binding.btnpilih
         btnparkir?.setOnClickListener(View.OnClickListener {
             val i = Intent(this@pilih, Form::class.java)
             startActivity(i)

@@ -3,6 +3,7 @@ package com.data.retrofit
 import com.data.response.BookedResponse
 import com.data.response.LoginResponse
 import com.data.response.SlotParkirResponse
+import com.data.response.SlotResponse
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -18,7 +19,7 @@ interface ApiService {
     ): LoginResponse
 
     @GET("api/slot-parkir")
-    suspend fun SlotAll(): SlotParkirResponse
+    suspend fun SlotAll(): SlotResponse
 
     @FormUrlEncoded
     @POST("api/parkir/booking-slot")
@@ -26,8 +27,6 @@ interface ApiService {
         @Field("plat_nomor") platNomor: String,
         @Field("nama_pemesan") namaPemesan: String,
         @Field("jenis_mobil") jenisMobil: String,
-        @Field("tanggal_masuk") tanggalMasuk: String,
-        @Field("tanggal_keluar") tanggalKeluar: String,
         @Field("id_slot") idSlot: String
     ): Call<BookedResponse>
 
