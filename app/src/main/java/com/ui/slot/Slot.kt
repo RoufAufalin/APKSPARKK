@@ -30,6 +30,11 @@ class slot : AppCompatActivity() {
             viewModelFactory
         }
 
+        binding.btnBack.setOnClickListener{
+            onBackPressed()
+            finish()
+        }
+
         pilihViewModel.getSlotParkir()
 
         pilihViewModel.result.observe(this, Observer {result ->

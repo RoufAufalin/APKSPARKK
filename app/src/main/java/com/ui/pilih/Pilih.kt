@@ -67,6 +67,10 @@ class pilih : AppCompatActivity() {
         // Set up click listeners
         setupClickListeners()
 
+        binding.btnBack.setOnClickListener{
+            onBackPressed()
+            finish()
+        }
 
         pilihViewModel.getSlotParkir()
 
