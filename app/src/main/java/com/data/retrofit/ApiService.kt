@@ -19,7 +19,7 @@ interface ApiService {
     ): LoginResponse
 
     @GET("api/slot-parkir")
-    suspend fun SlotAll(): SlotResponse
+    suspend fun getALlSlot(): SlotResponse
 
     @FormUrlEncoded
     @POST("api/parkir/booking-slot")

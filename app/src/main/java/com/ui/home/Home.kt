@@ -57,8 +57,6 @@ class Home : Fragment(), HomeAdapter.OnItemClickListener {
 
     override fun onItemClick(item: listItemHome) {
         val intent = Intent(activity, slot::class.java)
-        // Jika Anda ingin mengirim data tambahan ke slot activity
-        // intent.putExtra("extra_key", item.someProperty)
         startActivity(intent)
     }
 }

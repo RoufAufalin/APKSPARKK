@@ -7,6 +7,7 @@ import com.data.Repository
 import com.di.Injection
 import com.ui.bookedform.FormViewModel
 import com.ui.login.LoginViewModel
+import com.ui.pilih.PilihViewModel
 import com.ui.register.RegisterViewModel
 
 class ViewModelFactory private constructor(private val repository: Repository) :
@@ -23,6 +24,10 @@ class ViewModelFactory private constructor(private val repository: Repository) :
 
             modelClass.isAssignableFrom(FormViewModel::class.java) -> {
                 return FormViewModel(repository) as T
+            }
+
+            modelClass.isAssignableFrom(PilihViewModel::class.java) -> {
+                return PilihViewModel(repository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

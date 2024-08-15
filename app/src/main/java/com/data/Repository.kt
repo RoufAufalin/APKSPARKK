@@ -69,15 +69,34 @@ class Repository(private val apiService: ApiService, private val context: Contex
 
 
 
-    fun getSlotParkir(): LiveData<Result<SlotResponse>> = liveData {
-        emit(Result.Loading)
-        try {
-            val response = apiService.SlotAll()
-            Log.d("Repository", "Response received: $response")
-            emit(Result.Success(response))
+//    fun getSlotParkir(): LiveData<Result<SlotResponse>> = liveData {
+//        emit(Result.Loading)
+//        try {
+//            val response = apiService.SlotAll()
+//            Log.d("Repository", "Response received: $response")
+//            emit(Result.Success(response))
+//        } catch (e: Exception) {
+//            Log.e("Repository", "Error loading slot parkir: ${e.message}", e)
+//            emit(Result.Error(e, e.message ?: "Failed to load data"))
+//        }
+//    }
+
+//    suspend fun login(email: String, password: String) : Result<LoginResponse> {
+//        return try {
+//            val response = apiService.login(email, password)
+//            userPreferences.saveUser(response.accessToken, response.expiresIn)
+//            Log.d("Repository", "Response received: $response")
+//            Result.Success(response)
+//        } catch (e: Exception) {
+//            Result.Error(e, e.message ?: "Unknown error")
+//        }
+//    }
+    suspend fun getSlot(): Result<SlotResponse> {
+        return try {
+            val response = apiService.getALlSlot()
+            Result.Success(response)
         } catch (e: Exception) {
-            Log.e("Repository", "Error loading slot parkir: ${e.message}", e)
-            emit(Result.Error(e, e.message ?: "Failed to load data"))
+            Result.Error(e, e.message ?: "Unknown error")
         }
     }
 

@@ -5,10 +5,17 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import com.ViewModelFactory
+import com.data.Result
+import com.example.bottomnavyt.MainActivity
 import com.ui.bookedform.Form
 import com.example.bottomnavyt.R
 import com.example.bottomnavyt.databinding.ActivityPilihBinding
+import com.ui.login.LoginViewModel
 
 class pilih : AppCompatActivity() {
 
@@ -32,6 +39,12 @@ class pilih : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        val viewModelFactory: ViewModelFactory = ViewModelFactory.getInstance(this)
+        val pilihViewModel: PilihViewModel by viewModels {
+            viewModelFactory
+        }
+
+
         btnparkir = binding.btnpilih
         btnparkir?.setOnClickListener(View.OnClickListener {
             val i = Intent(this@pilih, Form::class.java)
@@ -53,12 +66,39 @@ class pilih : AppCompatActivity() {
 
         // Set up click listeners
         setupClickListeners()
+
+
+        pilihViewModel.getSlotParkir()
+
+        pilihViewModel.result.observe(this, Observer {result ->
+            if (result != null) {
+                when(result) {
+                    is Result.Loading -> {
+                        binding.progressBar.visibility = View.VISIBLE
+                    }
+                    is Result.Success -> {
+                        binding.progressBar.visibility = View.GONE
+
+                        if (result != null) {
+                            binding.slotparkir.text = result.data.slotKosong.toString()
+                        } else {
+                            Toast.makeText(this, "Gagal memuat data", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                    is Result.Error -> {
+                        binding.progressBar.visibility = View.GONE
+                        Toast.makeText(this, result.error.message, Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+
+        })
     }
 
     private fun initializeSeats() {
         for (i in 1..51) {
             val seatId = "seat_$i"
-            seats[seatId] = Seat(AVAILABLE) // Ganti dengan status kursi yang diinginkan (AVAILABLE/BOOKED)
+            seats[seatId] = Seat(AVAILABLE)
         }
     }
 
