@@ -29,10 +29,14 @@ class PilihParkirActivity : AppCompatActivity() {
             tab.text = resources.getString(TAB_TITLES[position])
         }.attach()
 
-        val tempatParkir = binding.textView
+        val tempatParkir = binding.tvLokasi
         val intent = intent
 
         tempatParkir.text = intent.getStringExtra("loc")
+
+        binding.backButton.setOnClickListener {
+            onBackPressed()
+        }
     }
 
     companion object {
