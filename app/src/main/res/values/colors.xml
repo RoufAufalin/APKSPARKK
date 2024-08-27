@@ -9,8 +9,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="yellowspark">#FFD602</color>
     <color name="bottom_nav_color_state_list">#FF142B6F</color>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorPrimary">@color/bluespark</color>
+    <color name="colorPrimaryDark">@color/bluespark</color>
     <color name="bluespark">#142B6F</color>
     <color name="colorAccent">#03DAC5</color>
 

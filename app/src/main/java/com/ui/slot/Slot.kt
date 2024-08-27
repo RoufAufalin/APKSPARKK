@@ -14,6 +14,7 @@ import com.example.bottomnavyt.R
 import com.example.bottomnavyt.databinding.ActivitySlotBinding
 import com.ui.pilih.PilihViewModel
 import com.ui.pilih.pilih
+import com.ui.pilihparkir.PilihParkirActivity
 
 class slot : AppCompatActivity() {
     private var Tabebuya2: CardView? = null
@@ -64,7 +65,9 @@ class slot : AppCompatActivity() {
 
         Tabebuya2 = findViewById<CardView>(R.id.tabebuya2)
         Tabebuya2?.setOnClickListener {
-            val i = Intent(this, pilih::class.java) // Gunakan 'this' bukan 'activity'
+            val i = Intent(this, PilihParkirActivity::class.java).apply {
+                putExtra("loc", binding.parkir1.text.toString())
+            }
             startActivity(i)
         }
     }

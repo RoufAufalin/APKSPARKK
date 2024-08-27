@@ -704,7 +704,6 @@
                                 android:layout_weight="50"
                                 android:gravity="center">
 
-
                             </LinearLayout>
 
                         </LinearLayout>

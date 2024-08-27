@@ -109,10 +109,11 @@
                             android:orientation="vertical">
 
                             <TextView
+                                android:id="@+id/parkir1"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/calibri"
-                                android:text="Mushollah Rektorat"
+                                android:text="@string/mushollah_rektorat"
                                 android:textColor="#000000"
                                 android:textStyle="bold" />
 
