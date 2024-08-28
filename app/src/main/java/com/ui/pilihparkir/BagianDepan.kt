@@ -6,55 +6,78 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.bottomnavyt.R
+import com.example.bottomnavyt.databinding.FragmentBagianDepanBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [BagianDepan.newInstance] factory method to
- * create an instance of this fragment.
- */
 class BagianDepan : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var _binding: FragmentBagianDepanBinding? = null
+    private val binding get() = _binding!!
+
+
+    private enum class ParkingSlotStatus {
+        EMPTY, CLICKED, BOOKED
+    }
+
+    private val seatStatus = mutableMapOf<Int, ParkingSlotStatus>()
+    private val clickCount = mutableMapOf<Int, Int>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
+
+        _binding = FragmentBagianDepanBinding.inflate(inflater, container, false)
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_bagian_depan, container, false)
+        val view = binding.root
+
+        setupSeats()
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment BagianDepan.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            BagianDepan().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    private fun setupSeats(){
+        val seats = mutableListOf<View>()
+        for (i in 1..24) {
+            val seatId = resources.getIdentifier("seat_$i", "id", requireContext().packageName)
+            val seatView = binding.root.findViewById<View>(seatId)
+            seats.add(seatView)
+
+            seatStatus[i] = ParkingSlotStatus.EMPTY
+
+            seatView.setOnClickListener {
+                handleSeatClick(i, seatView)
             }
+        }
+
+    }
+
+    private fun handleSeatClick(i: Int, seat: View) {
+        when (seatStatus[i]){
+            ParkingSlotStatus.EMPTY -> {
+                seatStatus[i] = ParkingSlotStatus.CLICKED
+                seat.setBackgroundResource(R.drawable.slot_available)
+            }
+            ParkingSlotStatus.CLICKED -> {
+                seatStatus[i] = ParkingSlotStatus.BOOKED
+                seat.setBackgroundResource(R.drawable.slot_empty)
+            }
+            ParkingSlotStatus.BOOKED -> {
+
+            }
+
+            else -> {}
+        }
+
+    }
+
+
+    private fun updateSeatBackground(seat: View, status: ParkingSlotStatus) {
+        when (status) {
+            ParkingSlotStatus.EMPTY -> seat.setBackgroundResource(R.drawable.slot_empty)
+            ParkingSlotStatus.CLICKED -> seat.setBackgroundResource(R.drawable.slot_available)
+            ParkingSlotStatus.BOOKED -> seat.setBackgroundResource(R.drawable.slot_booked)
+        }
     }
 }

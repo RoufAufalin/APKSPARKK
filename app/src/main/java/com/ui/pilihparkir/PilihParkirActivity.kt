@@ -1,6 +1,7 @@
 package com.ui.pilihparkir
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
@@ -38,7 +39,6 @@ class PilihParkirActivity : AppCompatActivity() {
             onBackPressed()
         }
     }
-
     companion object {
         @StringRes
         private val TAB_TITLES = intArrayOf (

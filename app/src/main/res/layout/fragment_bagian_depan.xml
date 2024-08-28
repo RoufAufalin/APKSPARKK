@@ -70,154 +70,47 @@
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <GridLayout
             android:layout_width="wrap_content"
             android:layout_height="240dp"
             android:columnCount="18"
-            android:rowCount="4"
-            android:padding="12dp">
+            android:padding="12dp"
+            android:rowCount="4">
 
             <FrameLayout
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_margin="2dp"
                 android:layout_row="0"
-                android:layout_column="0">
+                android:layout_column="0"
+                android:layout_margin="2dp">
 
                 <View
+                    android:id="@+id/seat_1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/slot_empty"/>
+                    android:background="@drawable/slot_empty" />
 
                 <TextView
                     android:id="@+id/id_slot"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
+                    android:layout_gravity="center"
                     android:fontFamily="@font/gotham"
                     android:textColor="@color/bluespark"
-                    android:layout_gravity="center"/>
+                    android:textSize="18sp" />
 
             </FrameLayout>
 
             <FrameLayout
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_margin="2dp"
                 android:layout_row="0"
-                android:layout_column="1">
+                android:layout_column="1"
+                android:layout_margin="2dp">
 
                 <View
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/slot_empty"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/gotham"
-                    android:textColor="@color/bluespark"
-                    android:layout_gravity="center"/>
-
-            </FrameLayout>
-
-            <FrameLayout
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_margin="2dp"
-                android:layout_row="0"
-                android:layout_column="2">
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/slot_empty"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/gotham"
-                    android:textColor="@color/bluespark"
-                    android:layout_gravity="center"/>
-
-            </FrameLayout>
-
-            <FrameLayout
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_margin="2dp"
-                android:layout_row="0"
-                android:layout_column="3">
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/slot_empty"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/gotham"
-                    android:textColor="@color/bluespark"
-                    android:layout_gravity="center"/>
-
-            </FrameLayout>
-
-            <FrameLayout
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_margin="2dp"
-                android:layout_row="0"
-                android:layout_column="4">
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/slot_empty"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/gotham"
-                    android:textColor="@color/bluespark"
-                    android:layout_gravity="center"/>
-
-            </FrameLayout>
-
-            <FrameLayout
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_margin="2dp"
-                android:layout_row="0"
-                android:layout_column="5">
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/white" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/gotham"
-                    android:textColor="@color/bluespark"
-                    android:layout_gravity="center" />
-
-            </FrameLayout>
-
-            <FrameLayout
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_margin="2dp"
-                android:layout_row="0"
-                android:layout_column="6">
-
-                <View
+                    android:id="@+id/seat_2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/slot_empty" />
@@ -225,20 +118,22 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
+                    android:layout_gravity="center"
                     android:fontFamily="@font/gotham"
                     android:textColor="@color/bluespark"
-                    android:layout_gravity="center" />
+                    android:textSize="18sp" />
 
             </FrameLayout>
+
             <FrameLayout
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_margin="2dp"
                 android:layout_row="0"
-                android:layout_column="7">
+                android:layout_column="2"
+                android:layout_margin="2dp">
 
                 <View
+                    android:id="@+id/seat_3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/slot_empty" />
@@ -246,20 +141,22 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
+                    android:layout_gravity="center"
                     android:fontFamily="@font/gotham"
                     android:textColor="@color/bluespark"
-                    android:layout_gravity="center" />
+                    android:textSize="18sp" />
 
             </FrameLayout>
+
             <FrameLayout
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_margin="2dp"
                 android:layout_row="0"
-                android:layout_column="8">
+                android:layout_column="3"
+                android:layout_margin="2dp">
 
                 <View
+                    android:id="@+id/seat_4"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/slot_empty" />
@@ -267,20 +164,22 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
+                    android:layout_gravity="center"
                     android:fontFamily="@font/gotham"
                     android:textColor="@color/bluespark"
-                    android:layout_gravity="center" />
+                    android:textSize="18sp" />
 
             </FrameLayout>
+
             <FrameLayout
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_margin="2dp"
                 android:layout_row="0"
-                android:layout_column="9">
+                android:layout_column="4"
+                android:layout_margin="2dp">
 
                 <View
+                    android:id="@+id/seat_5"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/slot_empty" />
@@ -288,20 +187,23 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
+                    android:layout_gravity="center"
                     android:fontFamily="@font/gotham"
                     android:textColor="@color/bluespark"
-                    android:layout_gravity="center" />
+                    android:textSize="18sp" />
 
             </FrameLayout>
+
+
             <FrameLayout
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_margin="2dp"
                 android:layout_row="0"
-                android:layout_column="10">
+                android:layout_column="6"
+                android:layout_margin="2dp">
 
                 <View
+                    android:id="@+id/seat_6"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/slot_empty" />
@@ -309,20 +211,22 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
+                    android:layout_gravity="center"
                     android:fontFamily="@font/gotham"
                     android:textColor="@color/bluespark"
-                    android:layout_gravity="center" />
+                    android:textSize="18sp" />
 
             </FrameLayout>
+
             <FrameLayout
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_margin="2dp"
                 android:layout_row="0"
-                android:layout_column="11">
+                android:layout_column="7"
+                android:layout_margin="2dp">
 
                 <View
+                    android:id="@+id/seat_7"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/slot_empty" />
@@ -330,20 +234,22 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
+                    android:layout_gravity="center"
                     android:fontFamily="@font/gotham"
                     android:textColor="@color/bluespark"
-                    android:layout_gravity="center" />
+                    android:textSize="18sp" />
 
             </FrameLayout>
+
             <FrameLayout
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_margin="2dp"
                 android:layout_row="0"
-                android:layout_column="12">
+                android:layout_column="8"
+                android:layout_margin="2dp">
 
                 <View
+                    android:id="@+id/seat_8"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/slot_empty" />
@@ -351,20 +257,22 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
+                    android:layout_gravity="center"
                     android:fontFamily="@font/gotham"
                     android:textColor="@color/bluespark"
-                    android:layout_gravity="center" />
+                    android:textSize="18sp" />
 
             </FrameLayout>
+
             <FrameLayout
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_margin="2dp"
                 android:layout_row="0"
-                android:layout_column="13">
+                android:layout_column="9"
+                android:layout_margin="2dp">
 
                 <View
+                    android:id="@+id/seat_9"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/slot_empty" />
@@ -372,20 +280,22 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
+                    android:layout_gravity="center"
                     android:fontFamily="@font/gotham"
                     android:textColor="@color/bluespark"
-                    android:layout_gravity="center" />
+                    android:textSize="18sp" />
 
             </FrameLayout>
+
             <FrameLayout
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_margin="2dp"
                 android:layout_row="0"
-                android:layout_column="14">
+                android:layout_column="10"
+                android:layout_margin="2dp">
 
                 <View
+                    android:id="@+id/seat_10"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/slot_empty" />
@@ -393,43 +303,22 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
+                    android:layout_gravity="center"
                     android:fontFamily="@font/gotham"
                     android:textColor="@color/bluespark"
-                    android:layout_gravity="center" />
+                    android:textSize="18sp" />
 
             </FrameLayout>
 
             <FrameLayout
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_margin="2dp"
                 android:layout_row="0"
-                android:layout_column="15">
+                android:layout_column="11"
+                android:layout_margin="2dp">
 
                 <View
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/white" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/gotham"
-                    android:textColor="@color/bluespark"
-                    android:layout_gravity="center" />
-
-            </FrameLayout>
-
-            <FrameLayout
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_margin="2dp"
-                android:layout_row="0"
-                android:layout_column="16">
-
-                <View
+                    android:id="@+id/seat_11"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/slot_empty" />
@@ -437,21 +326,22 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
+                    android:layout_gravity="center"
                     android:fontFamily="@font/gotham"
                     android:textColor="@color/bluespark"
-                    android:layout_gravity="center" />
+                    android:textSize="18sp" />
 
             </FrameLayout>
 
             <FrameLayout
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_margin="2dp"
                 android:layout_row="0"
-                android:layout_column="17">
+                android:layout_column="12"
+                android:layout_margin="2dp">
 
                 <View
+                    android:id="@+id/seat_12"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/slot_empty" />
@@ -459,21 +349,93 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
+                    android:layout_gravity="center"
                     android:fontFamily="@font/gotham"
                     android:textColor="@color/bluespark"
-                    android:layout_gravity="center" />
+                    android:textSize="18sp" />
 
             </FrameLayout>
 
             <FrameLayout
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_margin="2dp"
+                android:layout_row="0"
+                android:layout_column="13"
+                android:layout_margin="2dp">
+
+                <View
+                    android:id="@+id/seat_13"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/slot_empty" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/gotham"
+                    android:textColor="@color/bluespark"
+                    android:textSize="18sp" />
+
+            </FrameLayout>
+
+
+            <FrameLayout
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_row="0"
+                android:layout_column="15"
+                android:layout_margin="2dp">
+
+                <View
+                    android:id="@+id/seat_14"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/slot_empty" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/gotham"
+                    android:textColor="@color/bluespark"
+                    android:textSize="18sp" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_row="0"
+                android:layout_column="16"
+                android:layout_margin="2dp">
+
+                <View
+                    android:id="@+id/seat_15"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/slot_empty" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/gotham"
+                    android:textColor="@color/bluespark"
+                    android:textSize="18sp" />
+
+            </FrameLayout>
+
+
+            <FrameLayout
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_row="3"
-                android:layout_column="0">
+                android:layout_column="0"
+                android:layout_margin="2dp">
 
                 <View
+                    android:id="@+id/seat_16"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/slot_empty" />
@@ -481,21 +443,22 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
+                    android:layout_gravity="center"
                     android:fontFamily="@font/gotham"
                     android:textColor="@color/bluespark"
-                    android:layout_gravity="center" />
+                    android:textSize="18sp" />
 
             </FrameLayout>
 
             <FrameLayout
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_margin="2dp"
                 android:layout_row="3"
-                android:layout_column="4">
+                android:layout_column="4"
+                android:layout_margin="2dp">
 
                 <View
+                    android:id="@+id/seat_17"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/slot_empty" />
@@ -503,21 +466,22 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
+                    android:layout_gravity="center"
                     android:fontFamily="@font/gotham"
                     android:textColor="@color/bluespark"
-                    android:layout_gravity="center" />
+                    android:textSize="18sp" />
 
             </FrameLayout>
 
             <FrameLayout
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_margin="2dp"
                 android:layout_row="3"
-                android:layout_column="5">
+                android:layout_column="5"
+                android:layout_margin="2dp">
 
                 <View
+                    android:id="@+id/seat_18"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/slot_empty" />
@@ -525,21 +489,22 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
+                    android:layout_gravity="center"
                     android:fontFamily="@font/gotham"
                     android:textColor="@color/bluespark"
-                    android:layout_gravity="center" />
+                    android:textSize="18sp" />
 
             </FrameLayout>
 
             <FrameLayout
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_margin="2dp"
                 android:layout_row="3"
-                android:layout_column="12">
+                android:layout_column="11"
+                android:layout_margin="2dp">
 
                 <View
+                    android:id="@+id/seat_19"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/slot_empty" />
@@ -547,63 +512,22 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
+                    android:layout_gravity="center"
                     android:fontFamily="@font/gotham"
                     android:textColor="@color/bluespark"
-                    android:layout_gravity="center" />
-
-            </FrameLayout>
-            <FrameLayout
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_margin="2dp"
-                android:layout_row="3"
-                android:layout_column="13">
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/slot_empty" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/gotham"
-                    android:textColor="@color/bluespark"
-                    android:layout_gravity="center" />
-
-            </FrameLayout>
-            <FrameLayout
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_margin="2dp"
-                android:layout_row="3"
-                android:layout_column="14">
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/slot_empty" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/gotham"
-                    android:textColor="@color/bluespark"
-                    android:layout_gravity="center" />
+                    android:textSize="18sp" />
 
             </FrameLayout>
 
             <FrameLayout
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_margin="2dp"
                 android:layout_row="3"
-                android:layout_column="15">
+                android:layout_column="12"
+                android:layout_margin="2dp">
 
                 <View
+                    android:id="@+id/seat_20"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/slot_empty" />
@@ -611,21 +535,22 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
+                    android:layout_gravity="center"
                     android:fontFamily="@font/gotham"
                     android:textColor="@color/bluespark"
-                    android:layout_gravity="center" />
+                    android:textSize="18sp" />
 
             </FrameLayout>
 
             <FrameLayout
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_margin="2dp"
                 android:layout_row="3"
-                android:layout_column="16">
+                android:layout_column="13"
+                android:layout_margin="2dp">
 
                 <View
+                    android:id="@+id/seat_21"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/slot_empty" />
@@ -633,21 +558,22 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
+                    android:layout_gravity="center"
                     android:fontFamily="@font/gotham"
                     android:textColor="@color/bluespark"
-                    android:layout_gravity="center" />
+                    android:textSize="18sp" />
 
             </FrameLayout>
 
             <FrameLayout
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_margin="2dp"
                 android:layout_row="3"
-                android:layout_column="17">
+                android:layout_column="14"
+                android:layout_margin="2dp">
 
                 <View
+                    android:id="@+id/seat_22"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/slot_empty" />
@@ -655,10 +581,56 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
+                    android:layout_gravity="center"
                     android:fontFamily="@font/gotham"
                     android:textColor="@color/bluespark"
-                    android:layout_gravity="center" />
+                    android:textSize="18sp" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_row="3"
+                android:layout_column="15"
+                android:layout_margin="2dp">
+
+                <View
+                    android:id="@+id/seat_23"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/slot_empty" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/gotham"
+                    android:textColor="@color/bluespark"
+                    android:textSize="18sp" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_row="3"
+                android:layout_column="16"
+                android:layout_margin="2dp">
+
+                <View
+                    android:id="@+id/seat_24"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/slot_empty" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/gotham"
+                    android:textColor="@color/bluespark"
+                    android:textSize="18sp" />
 
             </FrameLayout>
 
