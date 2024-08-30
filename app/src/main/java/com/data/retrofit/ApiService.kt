@@ -23,12 +23,12 @@ interface ApiService {
 
     @FormUrlEncoded
     @POST("api/parkir/booking-slot")
-    fun bookSlot(
+    suspend fun bookSlot(
+        @Field("id_user") idUSer: Int,
         @Field("plat_nomor") platNomor: String,
-        @Field("nama_pemesan") namaPemesan: String,
         @Field("jenis_mobil") jenisMobil: String,
         @Field("id_slot") idSlot: String
-    ): Call<BookedResponse>
+    ): BookedResponse
 
     @FormUrlEncoded
     @POST("/api/register")

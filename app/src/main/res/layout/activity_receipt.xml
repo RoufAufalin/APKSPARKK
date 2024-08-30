@@ -37,13 +37,7 @@
           android:layout_gravity="center"
           android:paddingBottom="16dp" />
 
-      <TextView
-          android:id="@+id/tanggalTextView"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="Tanggal: "
-          android:textSize="18sp"
-          android:paddingBottom="8dp" />
+
 
       <TextView
           android:id="@+id/nomorTransaksiTextView"
@@ -77,11 +71,20 @@
           android:textSize="18sp"
           android:paddingBottom="8dp" />
 
+
       <TextView
-          android:id="@+id/waktuTextView"
+          android:id="@+id/tanggalTextView"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:text="Waktu: "
+          android:text="Tanggal Booking: "
+          android:textSize="18sp"
+          android:paddingBottom="8dp" />
+
+      <TextView
+          android:id="@+id/EndBookingTextView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Booking Berakhir: "
           android:textSize="18sp"
           android:paddingBottom="8dp" />
 

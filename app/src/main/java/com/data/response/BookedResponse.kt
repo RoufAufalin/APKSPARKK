@@ -22,11 +22,8 @@ data class Data(
 	@field:SerializedName("updated_at")
 	val updatedAt: String? = null,
 
-	@field:SerializedName("tanggal_masuk")
-	val tanggalMasuk: String? = null,
-
-	@field:SerializedName("tanggal_keluar")
-	val tanggalKeluar: String? = null,
+	@field:SerializedName("waktu_booking_berakhir")
+	val waktuBookingBerakhir: String? = null,
 
 	@field:SerializedName("nama_pemesan")
 	val namaPemesan: String? = null,
@@ -36,6 +33,9 @@ data class Data(
 
 	@field:SerializedName("jenis_mobil")
 	val jenisMobil: String? = null,
+
+	@field:SerializedName("waktu_booking")
+	val waktuBooking: String? = null,
 
 	@field:SerializedName("id")
 	val id: Int? = null,

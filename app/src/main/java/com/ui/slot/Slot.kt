@@ -65,7 +65,7 @@ class slot : AppCompatActivity() {
 
         Tabebuya2 = findViewById<CardView>(R.id.tabebuya2)
         Tabebuya2?.setOnClickListener {
-            val i = Intent(this, PilihParkirActivity::class.java).apply {
+            val i = Intent(this, pilih::class.java).apply {
                 putExtra("loc", binding.parkir1.text.toString())
             }
             startActivity(i)

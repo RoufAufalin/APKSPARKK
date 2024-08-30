@@ -19,16 +19,16 @@ class ReceiptActivity : AppCompatActivity() {
         val nomorPlatTextView: TextView = findViewById(R.id.nomorPlatTextView)
         val namaPemesanTextView: TextView = findViewById(R.id.namaPemesanTextView)
         val jenisMobilTextView: TextView = findViewById(R.id.jenisMobilTextView)
-        val waktuTextView: TextView = findViewById(R.id.waktuTextView)
+        val bookingBerakhir: TextView = findViewById(R.id.EndBookingTextView)
         val tempatParkirTextView: TextView = findViewById(R.id.tempatParkirTextView)
 
         val intent = intent
-        tanggalTextView.text = "Tanggal: " + intent.getStringExtra("TANGGAL")
+        tanggalTextView.text = "Waktu Booking: " + intent.getStringExtra("TANGGAL")
         nomorTransaksiTextView.text = "Nomor Transaksi: " + intent.getStringExtra("NOMOR_TRANSAKSI")
         nomorPlatTextView.text = "Nomor Plat: " + intent.getStringExtra("NOMOR_PLAT")
         namaPemesanTextView.text = "Nama Pemesan: " + intent.getStringExtra("NAMA_PEMESAN")
         jenisMobilTextView.text = "Jenis Mobil: " + intent.getStringExtra("JENIS_MOBIL")
-        waktuTextView.text = "Waktu: " + intent.getStringExtra("WAKTU")
+        bookingBerakhir.text = "Waktu Booking Berakhir: " + intent.getStringExtra("BOOKING_END")
         tempatParkirTextView.text = "Tempat Parkir: " + intent.getStringExtra("TEMPAT_PARKIR")
     }
 

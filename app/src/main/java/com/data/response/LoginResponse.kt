@@ -7,6 +7,9 @@ data class LoginResponse(
 	@field:SerializedName("access_token")
 	val accessToken: String,
 
+	@field:SerializedName("id")
+	val id: Int,
+
 	@field:SerializedName("token_type")
 	val tokenType: String,
 
@@ -24,4 +27,5 @@ data class LoginResult(
 
 	@field:SerializedName("expires_in")
 	val expiresIn: Int
+
 )

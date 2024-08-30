@@ -3,6 +3,7 @@ package com.ui.bookedform
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -12,12 +13,15 @@ import java.util.Calendar
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.ViewModelFactory
 import com.example.bottomnavyt.databinding.ActivityFormBinding
 import com.data.Result
 import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.Date
 import java.util.Locale
 
@@ -56,27 +60,44 @@ class Form : AppCompatActivity() {
 
             bookingViewModel.bookSlot(
                 platNomor = platNomor,
-                namaPemesan = namaPemesan,
+//                namaPemesan = namaPemesan,
                 jenisMobil = jenisMobil,
                 idSlot = idSlot
             )
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun observeViewModel() {
         bookingViewModel.bookingResponse.observe(this, Observer { result ->
             binding.progressBar.visibility = View.GONE
-            if (result != null) {
-                val intent = Intent(this, ReceiptActivity::class.java).apply {
-                    putExtra("NOMOR_TRANSAKSI", generateTransactionNumber())
-                    putExtra("NOMOR_PLAT", binding.nomorPlatField.text.toString())
-                    putExtra("NAMA_PEMESAN", binding.namaPemesanField.text.toString())
-                    putExtra("JENIS_MOBIL", binding.jenisMobilField.text.toString())
-                    putExtra("TEMPAT_PARKIR", binding.tempatParkirField.text.toString())
-                    putExtra("TANGGAL", result.data?.tanggalMasuk.toString())
+
+            when (result) {
+                is Result.Loading -> {
+                    binding.progressBar.visibility = View.VISIBLE
                 }
-                Toast.makeText(this, result.status, Toast.LENGTH_LONG).show()
-                startActivity(intent)
+                is Result.Success -> {
+                    val bookedResponse = result.data
+                    bookedResponse?.let { data->
+                        val tanggalBooking = parseDate(result.data.data?.waktuBooking.toString())
+                        val bookingBerakhir = parseDate(result.data.data?.waktuBookingBerakhir.toString())
+                        val intent = Intent(this, ReceiptActivity::class.java).apply {
+                            putExtra("NOMOR_TRANSAKSI", generateTransactionNumber())
+                            putExtra("NOMOR_PLAT", binding.nomorPlatField.text.toString())
+                            putExtra("NAMA_PEMESAN", binding.namaPemesanField.text.toString())
+                            putExtra("JENIS_MOBIL", binding.jenisMobilField.text.toString())
+                            putExtra("TEMPAT_PARKIR", binding.tempatParkirField.text.toString())
+                            putExtra("TANGGAL", tanggalBooking)
+                            putExtra("BOOKING_END", bookingBerakhir)
+                        }
+                        Toast.makeText(this, result.data.status, Toast.LENGTH_LONG).show()
+                        startActivity(intent)
+                    }
+                }
+
+                is Result.Error -> {
+                    Toast.makeText(this, result.errorMessage, Toast.LENGTH_LONG).show()
+                }
             }
         })
 
@@ -145,8 +166,15 @@ class Form : AppCompatActivity() {
         return "TRX" + System.currentTimeMillis().toString()
     }
 
-//    fun parseDate(dateString: String): Date? {
-//        val format = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
-//        return format.parse(dateString)
-//    }
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun parseDate(dateTimeString: String): String {
+        // Parse the date-time string to LocalDateTime
+        val localDateTime = LocalDateTime.parse(dateTimeString, DateTimeFormatter.ISO_DATE_TIME)
+
+        // Define the desired output format (e.g., "dd-MM-yyyy HH:mm:ss")
+        val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")
+
+        // Format LocalDateTime to string
+        return localDateTime.format(formatter)
+    }
 }
