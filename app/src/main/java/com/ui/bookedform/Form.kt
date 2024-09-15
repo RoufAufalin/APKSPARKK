@@ -5,6 +5,7 @@ import android.app.TimePickerDialog
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
@@ -31,6 +32,7 @@ class Form : AppCompatActivity() {
     private lateinit var binding: ActivityFormBinding
     private lateinit var bookingViewModel: FormViewModel
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFormBinding.inflate(layoutInflater)
@@ -51,6 +53,11 @@ class Form : AppCompatActivity() {
 //        binding.timeRangeField.setOnClickListener {
 //            showTimeRangePickerDialog()
 //        }
+
+        val idParkir = intent.getIntExtra("SELECTED_SEAT_ID", -1)
+
+        Log.d("FormActivity", "Selected Seat ID: $idParkir")
+        binding.tempatParkirField.setText(idParkir.toString())
 
         binding.submitButton.setOnClickListener {
             val platNomor = binding.nomorPlatField.text.toString()

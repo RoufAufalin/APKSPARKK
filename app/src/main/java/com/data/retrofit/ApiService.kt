@@ -9,6 +9,7 @@ import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface ApiService {
     @FormUrlEncoded
@@ -18,8 +19,10 @@ interface ApiService {
         @Field("password") password: String
     ): LoginResponse
 
-    @GET("api/slot-parkir")
-    suspend fun getALlSlot(): SlotResponse
+    @GET("api/slot-parkir/{id}/get-total-slot-parkirs")
+    suspend fun getALlSlot(
+        @Path("id") id: Int
+    ): SlotResponse
 
     @FormUrlEncoded
     @POST("api/parkir/booking-slot")

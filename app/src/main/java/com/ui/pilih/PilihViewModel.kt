@@ -21,7 +21,7 @@ class PilihViewModel(private val repository: Repository): ViewModel() {
         viewModelScope.launch {
             _result.value = Result.Loading
             try {
-                val response = repository.getSlot()
+                val response = repository.getSlot(1)
                 _result.value = response
             } catch (e: Exception) {
                 _result.value = Result.Error(e, e.message ?: "Unknown error")

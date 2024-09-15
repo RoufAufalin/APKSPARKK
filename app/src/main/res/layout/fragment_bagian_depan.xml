@@ -1,75 +1,87 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.ui.pilihparkir.BagianDepan">
 
+
     <LinearLayout
+        android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal"
         android:layout_marginVertical="10dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingPrefix">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
+
             <View
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:background="@drawable/slot_available"/>
+                android:background="@drawable/slot_available" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Dipilih"
+                android:layout_marginStart="8dp"
                 android:fontFamily="@font/gotham"
-                android:textColor="@color/bluespark"
-                android:layout_marginStart="8dp"/>
+                android:text="Dipilih"
+                android:textColor="@color/bluespark" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="28dp">
+
             <View
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:background="@drawable/slot_empty"/>
+                android:background="@drawable/slot_empty" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Kosong"
+                android:layout_marginStart="8dp"
                 android:fontFamily="@font/gotham"
-                android:textColor="@color/bluespark"
-                android:layout_marginStart="8dp"/>
+                android:text="Kosong"
+                android:textColor="@color/bluespark" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
+
             <View
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:background="@drawable/slot_booked"/>
+                android:background="@drawable/slot_booked" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Terisi"
+                android:layout_marginStart="8dp"
                 android:fontFamily="@font/gotham"
-                android:textColor="@color/bluespark"
-                android:layout_marginStart="8dp"/>
+                android:text="Terisi"
+                android:textColor="@color/bluespark" />
         </LinearLayout>
     </LinearLayout>
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+        tools:layout_editor_absoluteX="0dp">
 
         <GridLayout
             android:layout_width="wrap_content"
@@ -639,5 +651,12 @@
 
     </HorizontalScrollView>
 
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:text="Lanjutkan"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

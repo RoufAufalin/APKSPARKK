@@ -1,10 +1,12 @@
 package com.ui.pilihparkir
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.bottomnavyt.R
 import com.example.bottomnavyt.databinding.FragmentBagianDepanBinding
 
@@ -12,13 +14,12 @@ class BagianDepan : Fragment() {
     private var _binding: FragmentBagianDepanBinding? = null
     private val binding get() = _binding!!
 
-
     private enum class ParkingSlotStatus {
         EMPTY, CLICKED, BOOKED
     }
 
     private val seatStatus = mutableMapOf<Int, ParkingSlotStatus>()
-    private val clickCount = mutableMapOf<Int, Int>()
+    private var selectedSeatId: Int? = null // Simpan seat yang sedang dipilih
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,56 +29,74 @@ class BagianDepan : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-
         _binding = FragmentBagianDepanBinding.inflate(inflater, container, false)
-        // Inflate the layout for this fragment
         val view = binding.root
 
         setupSeats()
+
+        // Add a button to proceed to the next activity
+        binding.btnNext.setOnClickListener {
+            if (selectedSeatId != null) {
+                proceedToNextActivity(selectedSeatId!!)
+            } else {
+                Toast.makeText(requireContext(), "Please select a seat first", Toast.LENGTH_SHORT).show()
+            }
+        }
+
         return view
     }
 
-    private fun setupSeats(){
-        val seats = mutableListOf<View>()
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    private fun setupSeats() {
         for (i in 1..24) {
             val seatId = resources.getIdentifier("seat_$i", "id", requireContext().packageName)
             val seatView = binding.root.findViewById<View>(seatId)
-            seats.add(seatView)
 
             seatStatus[i] = ParkingSlotStatus.EMPTY
+            seatView.setBackgroundResource(R.drawable.slot_empty)
 
             seatView.setOnClickListener {
                 handleSeatClick(i, seatView)
             }
         }
-
     }
 
-    private fun handleSeatClick(i: Int, seat: View) {
-        when (seatStatus[i]){
+    private fun handleSeatClick(seatIndex: Int, seatView: View) {
+
+        if (selectedSeatId != null && selectedSeatId != seatIndex) {
+            val previousSeatViewId = resources.getIdentifier("seat_$selectedSeatId", "id", requireContext().packageName)
+            val previousSeatView = binding.root.findViewById<View>(previousSeatViewId)
+            previousSeatView?.setBackgroundResource(R.drawable.slot_empty)
+            seatStatus[selectedSeatId!!] = ParkingSlotStatus.EMPTY
+        }
+
+
+        when (seatStatus[seatIndex]) {
             ParkingSlotStatus.EMPTY -> {
-                seatStatus[i] = ParkingSlotStatus.CLICKED
-                seat.setBackgroundResource(R.drawable.slot_available)
+                seatStatus[seatIndex] = ParkingSlotStatus.CLICKED
+                seatView.setBackgroundResource(R.drawable.slot_available)
+                selectedSeatId = seatIndex
             }
             ParkingSlotStatus.CLICKED -> {
-                seatStatus[i] = ParkingSlotStatus.BOOKED
-                seat.setBackgroundResource(R.drawable.slot_empty)
+
+                seatStatus[seatIndex] = ParkingSlotStatus.EMPTY
+                seatView.setBackgroundResource(R.drawable.slot_empty)
+                selectedSeatId = null
             }
             ParkingSlotStatus.BOOKED -> {
 
             }
-
-            else -> {}
+            null -> Unit
         }
-
     }
 
-
-    private fun updateSeatBackground(seat: View, status: ParkingSlotStatus) {
-        when (status) {
-            ParkingSlotStatus.EMPTY -> seat.setBackgroundResource(R.drawable.slot_empty)
-            ParkingSlotStatus.CLICKED -> seat.setBackgroundResource(R.drawable.slot_available)
-            ParkingSlotStatus.BOOKED -> seat.setBackgroundResource(R.drawable.slot_booked)
-        }
+    private fun proceedToNextActivity(seatId: Int) {
+        val intent = Intent(requireContext(), com.ui.bookedform.Form::class.java)
+        intent.putExtra("SELECTED_SEAT_ID", seatId)
+        startActivity(intent)
     }
 }

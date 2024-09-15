@@ -391,6 +391,71 @@
 
 
                             </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:layout_weight="100"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="50"
+                                    android:gravity="center">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginEnd="16dp"
+                                        android:fontFamily="@font/print_clearly"
+                                        android:text="13"
+                                        android:textColor="#c3c3c3"
+                                        android:textSize="18sp"
+                                        android:textStyle="bold" />
+
+                                    <ImageView
+                                        android:id="@+id/seat_13"
+                                        android:layout_width="36dp"
+                                        android:layout_height="36dp"
+                                        android:layout_marginEnd="4dp"
+                                        android:src="@drawable/available_img" />
+
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="50"
+                                    android:gravity="center">
+
+                                    <ImageView
+                                        android:id="@+id/seat_22"
+                                        android:layout_width="36dp"
+                                        android:layout_height="36dp"
+                                        android:layout_marginEnd="4dp"
+                                        android:src="@drawable/available_img" />
+
+                                    <ImageView
+                                        android:layout_width="36dp"
+                                        android:layout_height="36dp"
+                                        android:layout_marginStart="4dp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="50"
+                                    android:gravity="center">
+
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -405,6 +470,11 @@
                                 android:gravity="center">
 
                             </LinearLayout>
+
+                            <ImageView
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                android:layout_marginStart="4dp" />
 
                         </LinearLayout>
 
@@ -602,69 +672,6 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginEnd="16dp"
                                     android:fontFamily="@font/print_clearly"
-                                    android:text="13"
-                                    android:textColor="#c3c3c3"
-                                    android:textSize="18sp"
-                                    android:textStyle="bold" />
-
-                                <ImageView
-                                    android:id="@+id/seat_13"
-                                    android:layout_width="36dp"
-                                    android:layout_height="36dp"
-                                    android:layout_marginEnd="4dp"
-                                    android:src="@drawable/available_img" />
-
-
-                            </LinearLayout>
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="50"
-                                android:gravity="center">
-
-                                <ImageView
-                                    android:id="@+id/seat_22"
-                                    android:layout_width="36dp"
-                                    android:layout_height="36dp"
-                                    android:layout_marginEnd="4dp"
-                                    android:src="@drawable/available_img" />
-
-                                <ImageView
-                                    android:layout_width="36dp"
-                                    android:layout_height="36dp"
-                                    android:layout_marginStart="4dp" />
-
-                            </LinearLayout>
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="50"
-                                android:gravity="center">
-
-
-
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="8dp"
-                            android:layout_weight="100"
-                            android:orientation="horizontal">
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="50"
-                                android:gravity="center">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginEnd="16dp"
-                                    android:fontFamily="@font/print_clearly"
                                     android:text="12"
                                     android:textColor="#c3c3c3"
                                     android:textSize="18sp"
@@ -691,11 +698,6 @@
                                     android:layout_height="36dp"
                                     android:layout_marginEnd="4dp"
                                     android:src="@drawable/available_img" />
-
-                                <ImageView
-                                    android:layout_width="36dp"
-                                    android:layout_height="36dp"
-                                    android:layout_marginStart="4dp" />
 
                             </LinearLayout>
                             <LinearLayout

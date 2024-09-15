@@ -113,9 +113,9 @@ class Repository(private val apiService: ApiService, private val context: Contex
 //            Result.Error(e, e.message ?: "Unknown error")
 //        }
 //    }
-    suspend fun getSlot(): Result<SlotResponse> {
+    suspend fun getSlot(id: Int): Result<SlotResponse> {
         return try {
-            val response = apiService.getALlSlot()
+            val response = apiService.getALlSlot(id)
             Result.Success(response)
         } catch (e: Exception) {
             Result.Error(e, e.message ?: "Unknown error")
