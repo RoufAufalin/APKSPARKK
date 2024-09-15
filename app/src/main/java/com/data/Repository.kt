@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
+import com.data.response.BlokResponse
 import com.data.response.BookedResponse
 import com.data.response.LoginResponse
 import com.data.response.SlotParkirResponse
@@ -116,6 +117,15 @@ class Repository(private val apiService: ApiService, private val context: Contex
     suspend fun getSlot(id: Int): Result<SlotResponse> {
         return try {
             val response = apiService.getALlSlot(id)
+            Result.Success(response)
+        } catch (e: Exception) {
+            Result.Error(e, e.message ?: "Unknown error")
+        }
+    }
+
+    suspend fun getSlotBlok(id: Int): Result<BlokResponse> {
+        return try {
+            val response = apiService.getBlokTotal(id)
             Result.Success(response)
         } catch (e: Exception) {
             Result.Error(e, e.message ?: "Unknown error")

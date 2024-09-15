@@ -46,13 +46,6 @@ class Form : AppCompatActivity() {
     }
 
     private fun setupListeners() {
-//        binding.dateField.setOnClickListener {
-//            showDatePickerDialog()
-//        }
-//
-//        binding.timeRangeField.setOnClickListener {
-//            showTimeRangePickerDialog()
-//        }
 
         val idParkir = intent.getIntExtra("SELECTED_SEAT_ID", -1)
 

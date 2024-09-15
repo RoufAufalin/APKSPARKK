@@ -1,5 +1,6 @@
 package com.data.retrofit
 
+import com.data.response.BlokResponse
 import com.data.response.BookedResponse
 import com.data.response.LoginResponse
 import com.data.response.SlotParkirResponse
@@ -24,6 +25,11 @@ interface ApiService {
         @Path("id") id: Int
     ): SlotResponse
 
+    @GET("api/slot-parkir/{id}/get-total-data-slot")
+    suspend fun getBlokTotal(
+        @Path("id")id: Int
+    ) : BlokResponse
+
     @FormUrlEncoded
     @POST("api/parkir/booking-slot")
     suspend fun bookSlot(
@@ -42,6 +48,8 @@ interface ApiService {
         @Field("alamat") alamat: String,
         @Field("phone") noHp: String
     ): LoginResponse
+
+
 
 
 

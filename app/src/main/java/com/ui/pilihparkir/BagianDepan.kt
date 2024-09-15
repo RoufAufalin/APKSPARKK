@@ -7,12 +7,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import com.ViewModelFactory
+import com.data.Result
+import com.data.Repository
+import com.data.response.BlokResponse
 import com.example.bottomnavyt.R
 import com.example.bottomnavyt.databinding.FragmentBagianDepanBinding
+import com.ui.pilih.PilihViewModel
 
 class BagianDepan : Fragment() {
     private var _binding: FragmentBagianDepanBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var pilihParkirViewModel: PilihParkirViewModel
 
     private enum class ParkingSlotStatus {
         EMPTY, CLICKED, BOOKED
@@ -32,7 +42,13 @@ class BagianDepan : Fragment() {
         _binding = FragmentBagianDepanBinding.inflate(inflater, container, false)
         val view = binding.root
 
+        pilihParkirViewModel = ViewModelProvider(
+            this,
+            ViewModelFactory.getInstance(requireContext())
+        )[PilihParkirViewModel::class.java]
+
         setupSeats()
+        observeViewModel()
 
         // Add a button to proceed to the next activity
         binding.btnNext.setOnClickListener {
@@ -61,6 +77,46 @@ class BagianDepan : Fragment() {
 
             seatView.setOnClickListener {
                 handleSeatClick(i, seatView)
+            }
+
+        }
+    }
+
+    private fun observeViewModel() {
+        pilihParkirViewModel.result.observe(viewLifecycleOwner) { result ->
+            when (result) {
+                is Result.Loading -> {
+                    binding.progressBar.visibility = View.VISIBLE
+                }
+                is Result.Success -> {
+                    val blokResponse = result.data
+                    updateSeatsBasedOnData(blokResponse)
+                    binding.progressBar.visibility = View.GONE
+                }
+                is Result.Error -> {
+                    Toast.makeText(requireContext(), result.errorMessage, Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
+        pilihParkirViewModel.getSlotBlok()
+    }
+
+    private fun updateSeatsBasedOnData(blokResponse: BlokResponse?) {
+        blokResponse?.data?.forEach { data ->
+            val seatId = data?.idBlok ?: return@forEach
+            val status = data.status
+
+            val seatView = binding.root.findViewById<View>(
+                resources.getIdentifier("seat_$seatId", "id", requireContext().packageName)
+            )
+
+            if (status == "BOOKED") {
+                seatView?.setBackgroundResource(R.drawable.slot_booked)
+                seatStatus[seatId] = ParkingSlotStatus.BOOKED
+            } else {
+                seatView?.setBackgroundResource(R.drawable.slot_empty)
+                seatStatus[seatId] = ParkingSlotStatus.EMPTY
             }
         }
     }
