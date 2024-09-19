@@ -24,6 +24,8 @@ class FormViewModel(private val repository: Repository) : ViewModel() {
     private val _errorMessage = MutableLiveData<String>()
     val errorMessage: LiveData<String> = _errorMessage
 
+
+
     fun bookSlot(
         platNomor: String,
 //        namaPemesan: String,
@@ -40,9 +42,7 @@ class FormViewModel(private val repository: Repository) : ViewModel() {
     }
 
 
-    private fun parseErrorMessage(errorBody: String?): String {
-        // Assuming the error body is a JSON string
-        // Extract the "pesan" field from the JSON response
+    fun parseErrorMessage(errorBody: String?): String {
         return try {
             val jsonObject = JSONObject(errorBody)
             jsonObject.optString("pesan", "Unknown error")

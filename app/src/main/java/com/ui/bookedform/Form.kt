@@ -96,7 +96,7 @@ class Form : AppCompatActivity() {
                 }
 
                 is Result.Error -> {
-                    Toast.makeText(this, result.errorMessage, Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, result.error.message, Toast.LENGTH_LONG).show()
                 }
             }
         })
@@ -107,7 +107,8 @@ class Form : AppCompatActivity() {
 
         bookingViewModel.errorMessage.observe(this, Observer { errorMessage ->
             errorMessage?.let {
-                Toast.makeText(this, it, Toast.LENGTH_LONG).show()
+                val error = bookingViewModel.parseErrorMessage(it)
+                Toast.makeText(this, error, Toast.LENGTH_LONG).show()
             }
         })
 

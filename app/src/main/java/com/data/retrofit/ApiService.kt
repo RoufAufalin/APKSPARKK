@@ -3,6 +3,7 @@ package com.data.retrofit
 import com.data.response.BlokResponse
 import com.data.response.BookedResponse
 import com.data.response.LoginResponse
+import com.data.response.SeatStatusResponse
 import com.data.response.SlotParkirResponse
 import com.data.response.SlotResponse
 import retrofit2.Call
@@ -29,6 +30,11 @@ interface ApiService {
     suspend fun getBlokTotal(
         @Path("id")id: Int
     ) : BlokResponse
+
+    @GET("api/slot-parkir/{id}/get-slot-depan-belakang")
+    suspend fun getStatusDepanBelakang(
+        @Path("id")id: Int
+    ) : SeatStatusResponse
 
     @FormUrlEncoded
     @POST("api/parkir/booking-slot")

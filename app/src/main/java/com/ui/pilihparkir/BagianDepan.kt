@@ -7,16 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.viewModels
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.ViewModelFactory
-import com.data.Result
-import com.data.Repository
-import com.data.response.BlokResponse
 import com.example.bottomnavyt.R
 import com.example.bottomnavyt.databinding.FragmentBagianDepanBinding
+import com.data.Result
+import com.data.response.DepanItem
 import com.ui.pilih.PilihViewModel
+import com.ViewModelFactory
 
 class BagianDepan : Fragment() {
     private var _binding: FragmentBagianDepanBinding? = null
@@ -29,11 +26,7 @@ class BagianDepan : Fragment() {
     }
 
     private val seatStatus = mutableMapOf<Int, ParkingSlotStatus>()
-    private var selectedSeatId: Int? = null // Simpan seat yang sedang dipilih
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private var selectedSeatId: Int? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,7 +43,6 @@ class BagianDepan : Fragment() {
         setupSeats()
         observeViewModel()
 
-        // Add a button to proceed to the next activity
         binding.btnNext.setOnClickListener {
             if (selectedSeatId != null) {
                 proceedToNextActivity(selectedSeatId!!)
@@ -78,45 +70,47 @@ class BagianDepan : Fragment() {
             seatView.setOnClickListener {
                 handleSeatClick(i, seatView)
             }
-
         }
     }
 
     private fun observeViewModel() {
-        pilihParkirViewModel.result.observe(viewLifecycleOwner) { result ->
+
+        pilihParkirViewModel.hasil.observe(viewLifecycleOwner) { result ->
             when (result) {
                 is Result.Loading -> {
                     binding.progressBar.visibility = View.VISIBLE
                 }
                 is Result.Success -> {
-                    val blokResponse = result.data
+                    val blokResponse = result.data.depan
                     updateSeatsBasedOnData(blokResponse)
                     binding.progressBar.visibility = View.GONE
                 }
                 is Result.Error -> {
-                    Toast.makeText(requireContext(), result.errorMessage, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), result.error.message, Toast.LENGTH_SHORT).show()
+                    binding.progressBar.visibility = View.GONE
                 }
             }
         }
 
-        pilihParkirViewModel.getSlotBlok()
+        pilihParkirViewModel.getSeatStatus()
     }
 
-    private fun updateSeatsBasedOnData(blokResponse: BlokResponse?) {
-        blokResponse?.data?.forEach { data ->
-            val seatId = data?.idBlok ?: return@forEach
+    private fun updateSeatsBasedOnData(depanItems: List<DepanItem?>?) {
+        depanItems?.forEach { data ->
+            val seatIdFromApi = data?.id ?: return@forEach
             val status = data.status
 
-            val seatView = binding.root.findViewById<View>(
-                resources.getIdentifier("seat_$seatId", "id", requireContext().packageName)
-            )
+            val seatViewId = resources.getIdentifier("seat_$seatIdFromApi", "id", requireContext().packageName)
+            val seatView = binding.root.findViewById<View>(seatViewId)
 
-            if (status == "BOOKED") {
+            if (status == "Terisi" || status == "Dibooking") {
                 seatView?.setBackgroundResource(R.drawable.slot_booked)
-                seatStatus[seatId] = ParkingSlotStatus.BOOKED
-            } else {
+                seatStatus[seatIdFromApi] = ParkingSlotStatus.BOOKED
+            }
+
+            else {
                 seatView?.setBackgroundResource(R.drawable.slot_empty)
-                seatStatus[seatId] = ParkingSlotStatus.EMPTY
+                seatStatus[seatIdFromApi] = ParkingSlotStatus.EMPTY
             }
         }
     }
@@ -130,6 +124,10 @@ class BagianDepan : Fragment() {
             seatStatus[selectedSeatId!!] = ParkingSlotStatus.EMPTY
         }
 
+        if (seatStatus[seatIndex] == ParkingSlotStatus.BOOKED) {
+            Toast.makeText(requireContext(), "This slot is already booked", Toast.LENGTH_SHORT).show()
+            return
+        }
 
         when (seatStatus[seatIndex]) {
             ParkingSlotStatus.EMPTY -> {
@@ -138,13 +136,11 @@ class BagianDepan : Fragment() {
                 selectedSeatId = seatIndex
             }
             ParkingSlotStatus.CLICKED -> {
-
                 seatStatus[seatIndex] = ParkingSlotStatus.EMPTY
                 seatView.setBackgroundResource(R.drawable.slot_empty)
                 selectedSeatId = null
             }
             ParkingSlotStatus.BOOKED -> {
-
             }
             null -> Unit
         }
@@ -155,4 +151,5 @@ class BagianDepan : Fragment() {
         intent.putExtra("SELECTED_SEAT_ID", seatId)
         startActivity(intent)
     }
+
 }

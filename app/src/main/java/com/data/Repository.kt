@@ -7,6 +7,7 @@ import androidx.lifecycle.liveData
 import com.data.response.BlokResponse
 import com.data.response.BookedResponse
 import com.data.response.LoginResponse
+import com.data.response.SeatStatusResponse
 import com.data.response.SlotParkirResponse
 import com.data.response.SlotResponse
 import com.data.retrofit.ApiService
@@ -28,17 +29,6 @@ class Repository(private val apiService: ApiService, private val context: Contex
         userPreferences.clearUser()
     }
 
-//    fun login(email: String, pw: String): LiveData<Result<LoginResponse>> = liveData {
-//        emit(Result.Loading)
-//        try {
-//            val response = apiService.login(email, pw)
-//            userPreferences.setUserPreferences(Username(tokenName = response.accessToken))
-//            emit(Result.Success(response))
-//        } catch (e: Exception) {
-//            Log.e("Repository", "Login error: ${e.message}", e)
-//            emit(Result.Error(e.message.toString()))
-//        }
-//    }
 
     suspend fun login(email: String, password: String) : Result<LoginResponse> {
         return try {
@@ -66,15 +56,6 @@ class Repository(private val apiService: ApiService, private val context: Contex
         userPreferences.clearUser()
     }
 
-//    fun bookSlot(
-//        idUser: Int,
-//        platNomor: String,
-//        namaPemesan: String,
-//        jenisMobil: String,
-//        idSlot: String
-//    ) = apiService.bookSlot(idUser, platNomor, namaPemesan, jenisMobil, idSlot)
-//
-
     suspend fun bookSlot(
         platNomor: String,
         jenisMobil: String,
@@ -92,28 +73,6 @@ class Repository(private val apiService: ApiService, private val context: Contex
 
 
 
-//    fun getSlotParkir(): LiveData<Result<SlotResponse>> = liveData {
-//        emit(Result.Loading)
-//        try {
-//            val response = apiService.SlotAll()
-//            Log.d("Repository", "Response received: $response")
-//            emit(Result.Success(response))
-//        } catch (e: Exception) {
-//            Log.e("Repository", "Error loading slot parkir: ${e.message}", e)
-//            emit(Result.Error(e, e.message ?: "Failed to load data"))
-//        }
-//    }
-
-//    suspend fun login(email: String, password: String) : Result<LoginResponse> {
-//        return try {
-//            val response = apiService.login(email, password)
-//            userPreferences.saveUser(response.accessToken, response.expiresIn)
-//            Log.d("Repository", "Response received: $response")
-//            Result.Success(response)
-//        } catch (e: Exception) {
-//            Result.Error(e, e.message ?: "Unknown error")
-//        }
-//    }
     suspend fun getSlot(id: Int): Result<SlotResponse> {
         return try {
             val response = apiService.getALlSlot(id)
@@ -126,6 +85,15 @@ class Repository(private val apiService: ApiService, private val context: Contex
     suspend fun getSlotBlok(id: Int): Result<BlokResponse> {
         return try {
             val response = apiService.getBlokTotal(id)
+            Result.Success(response)
+        } catch (e: Exception) {
+            Result.Error(e, e.message ?: "Unknown error")
+        }
+    }
+
+    suspend fun getSeatStatus(id: Int): Result<SeatStatusResponse> {
+        return try {
+            val response = apiService.getStatusDepanBelakang(id)
             Result.Success(response)
         } catch (e: Exception) {
             Result.Error(e, e.message ?: "Unknown error")
