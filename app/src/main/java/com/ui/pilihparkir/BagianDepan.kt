@@ -152,4 +152,8 @@ class BagianDepan : Fragment() {
         startActivity(intent)
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+    }
+
 }

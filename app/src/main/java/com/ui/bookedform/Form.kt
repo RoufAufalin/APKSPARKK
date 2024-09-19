@@ -54,13 +54,11 @@ class Form : AppCompatActivity() {
 
         binding.submitButton.setOnClickListener {
             val platNomor = binding.nomorPlatField.text.toString()
-            val namaPemesan = binding.namaPemesanField.text.toString()
             val jenisMobil = binding.jenisMobilField.text.toString()
             val idSlot = binding.tempatParkirField.text.toString()
 
             bookingViewModel.bookSlot(
                 platNomor = platNomor,
-//                namaPemesan = namaPemesan,
                 jenisMobil = jenisMobil,
                 idSlot = idSlot
             )
@@ -114,68 +112,16 @@ class Form : AppCompatActivity() {
 
     }
 
-//    private fun showDatePickerDialog() {
-//        val calendar = Calendar.getInstance()
-//        val year = calendar.get(Calendar.YEAR)
-//        val month = calendar.get(Calendar.MONTH)
-//        val day = calendar.get(Calendar.DAY_OF_MONTH)
-//
-//        val datePickerDialog = DatePickerDialog(
-//            this,
-//            { _, selectedYear, selectedMonth, selectedDay ->
-//                val formattedDate = "$selectedYear-${selectedMonth + 1}-$selectedDay"
-//                binding.dateField.setText(formattedDate)
-//            },
-//            year,
-//            month,
-//            day
-//        )
-//        datePickerDialog.show()
-//    }
-//
-//    private fun showTimeRangePickerDialog() {
-//        val calendar = Calendar.getInstance()
-//        val hour = calendar.get(Calendar.HOUR_OF_DAY)
-//        val minute = calendar.get(Calendar.MINUTE)
-//
-//        val timePickerDialogStart = TimePickerDialog(
-//            this,
-//            { _, selectedHour, selectedMinute ->
-//                val formattedStartTime = String.format("%02d:%02d", selectedHour, selectedMinute)
-//
-//                val timePickerDialogEnd = TimePickerDialog(
-//                    this,
-//                    { _, endHour, endMinute ->
-//                        val formattedEndTime = String.format("%02d:%02d", endHour, endMinute)
-//                        val formattedTimeRange = "$formattedStartTime - $formattedEndTime"
-//                        binding.timeRangeField.setText(formattedTimeRange)
-//                    },
-//                    hour,
-//                    minute,
-//                    true
-//                )
-//                timePickerDialogEnd.show()
-//            },
-//            hour,
-//            minute,
-//            true
-//        )
-//        timePickerDialogStart.show()
-//    }
-
     private fun generateTransactionNumber(): String {
         return "TRX" + System.currentTimeMillis().toString()
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun parseDate(dateTimeString: String): String {
-        // Parse the date-time string to LocalDateTime
         val localDateTime = LocalDateTime.parse(dateTimeString, DateTimeFormatter.ISO_DATE_TIME)
 
-        // Define the desired output format (e.g., "dd-MM-yyyy HH:mm:ss")
         val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")
 
-        // Format LocalDateTime to string
         return localDateTime.format(formatter)
     }
 }

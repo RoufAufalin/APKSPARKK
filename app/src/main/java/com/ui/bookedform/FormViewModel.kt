@@ -28,7 +28,6 @@ class FormViewModel(private val repository: Repository) : ViewModel() {
 
     fun bookSlot(
         platNomor: String,
-//        namaPemesan: String,
         jenisMobil: String,
         idSlot: String
     ) {
