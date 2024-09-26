@@ -3,6 +3,7 @@ package com.ui.login
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -52,12 +53,13 @@ class Login : AppCompatActivity() {
                     }
                     is Result.Error -> {
                         binding.progressBar.visibility = View.GONE
-                        Toast.makeText(this, result.error.message, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, result.message, Toast.LENGTH_SHORT).show()
                     }
                 }
             }
 
         })
+
 
         binding.btnLogin.setOnClickListener {
             val email = binding.EmailText.text.toString()

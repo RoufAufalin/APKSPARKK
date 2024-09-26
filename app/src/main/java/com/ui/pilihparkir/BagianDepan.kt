@@ -2,6 +2,7 @@ package com.ui.pilihparkir
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -64,11 +65,15 @@ class BagianDepan : Fragment() {
             val seatId = resources.getIdentifier("seat_$i", "id", requireContext().packageName)
             val seatView = binding.root.findViewById<View>(seatId)
 
-            seatStatus[i] = ParkingSlotStatus.EMPTY
-            seatView.setBackgroundResource(R.drawable.slot_empty)
+            if (seatView != null) {
+                seatStatus[i] = ParkingSlotStatus.EMPTY
+                seatView.setBackgroundResource(R.drawable.slot_empty)
 
-            seatView.setOnClickListener {
-                handleSeatClick(i, seatView)
+                seatView.setOnClickListener {
+                    handleSeatClick(i, seatView)
+                }
+            } else {
+                Log.e("setupSeats", "Seat with ID seat_$i not found")
             }
         }
     }

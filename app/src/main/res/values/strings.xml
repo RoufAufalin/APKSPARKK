@@ -45,5 +45,6 @@
     <string name="tab_text_1">Depan</string>
     <string name="tab_text_2">Belakang</string>
     <string name="mushollah_rektorat">Mushollah Rektorat</string>
+    <string name="register">Daftar</string>
 
 </resources>
