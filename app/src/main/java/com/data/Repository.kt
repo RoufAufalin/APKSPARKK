@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.data.response.BlokResponse
 import com.data.response.BookedResponse
+import com.data.response.ListBookedResponse
 import com.data.response.LoginResponse
 import com.data.response.SeatStatusResponse
 import com.data.response.SlotParkirResponse
@@ -94,6 +95,16 @@ class Repository(private val apiService: ApiService, private val context: Contex
     suspend fun getSeatStatus(id: Int): Result<SeatStatusResponse> {
         return try {
             val response = apiService.getStatusDepanBelakang(id)
+            Result.Success(response)
+        } catch (e: Exception) {
+            Result.Error(e, e.message ?: "Unknown error")
+        }
+    }
+
+    suspend fun getListBooked(): Result<ListBookedResponse> {
+        return try {
+            val id = userPreferences.getIdUser()
+            val response = apiService.getListBook(id)
             Result.Success(response)
         } catch (e: Exception) {
             Result.Error(e, e.message ?: "Unknown error")

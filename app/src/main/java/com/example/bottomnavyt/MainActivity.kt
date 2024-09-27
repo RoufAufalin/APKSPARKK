@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import com.data.UserPreferences
 import com.example.bottomnavyt.databinding.ActivityMainBinding
 import com.ui.home.Home
+import com.ui.listbooked.Profile
 import com.ui.login.Login
 
 class MainActivity : AppCompatActivity() {

@@ -1,0 +1,85 @@
+package com.ui.listbooked
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.ViewModelFactory
+import com.data.Result
+import com.data.response.DataItemz
+import com.example.bottomnavyt.R
+import com.example.bottomnavyt.databinding.FragmentProfileBinding
+
+class Profile : Fragment() {
+
+    private var _binding: FragmentProfileBinding? = null
+    val binding get() = _binding!!
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        _binding = FragmentProfileBinding.inflate(inflater, container, false)
+        val root = binding.root
+        return root
+    }
+
+
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val viewModelFactory : ViewModelFactory = ViewModelFactory.getInstance(requireContext())
+        val bookViewModel = ViewModelProvider(this, viewModelFactory)[BookedViewModel::class.java]
+
+        bookViewModel.getListBooked()
+
+        bookViewModel.bookedResponse.observe(viewLifecycleOwner, Observer {result ->
+            if (result != null) {
+                when (result) {
+                    is Result.Loading -> {
+                        binding.progressBar.visibility = View.VISIBLE
+                    }
+
+                    is Result.Success -> {
+                        binding.progressBar.visibility = View.GONE
+                        val listBookResponse = result.data
+                        getListBooked(listBookResponse.data)
+
+                    }
+
+                    else -> {}
+                }
+            }
+
+
+        })
+    }
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    private fun getListBooked(listBooked : List<DataItemz>?) {
+
+        if (listBooked != null) {
+            val adapterList = BookedAdapter(listBooked)
+            binding.listBooking.apply {
+                adapter = adapterList
+                layoutManager = LinearLayoutManager(requireContext())
+            }
+        } else (
+            Toast.makeText(requireContext(), "Tidak ada data", Toast.LENGTH_SHORT).show()
+        )
+    }
+
+}
