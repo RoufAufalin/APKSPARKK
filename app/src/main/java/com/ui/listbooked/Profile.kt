@@ -54,6 +54,10 @@ class Profile : Fragment() {
                         getListBooked(listBookResponse.data)
 
                     }
+                    is Result.Error -> {
+                        binding.progressBar.visibility = View.GONE
+                        Toast.makeText(requireContext(), "Terjadi kesalahan", Toast.LENGTH_SHORT).show()
+                    }
 
                     else -> {}
                 }
@@ -77,9 +81,21 @@ class Profile : Fragment() {
                 adapter = adapterList
                 layoutManager = LinearLayoutManager(requireContext())
             }
+
+            adapterList.setOnItemClickCallback(object : BookedAdapter.OnItemClickCallback{
+                override fun onItemClicked(data: DataItemz) {
+                    selectedBooked(data)
+                }
+
+            })
         } else (
             Toast.makeText(requireContext(), "Tidak ada data", Toast.LENGTH_SHORT).show()
         )
     }
+
+    private fun selectedBooked(data: DataItemz){
+        Toast.makeText(requireContext(), "Kamu memilih ${data.id}", Toast.LENGTH_SHORT).show()
+    }
+
 
 }
