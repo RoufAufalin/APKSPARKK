@@ -1,6 +1,8 @@
 package com.ui.listbooked
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +16,7 @@ import com.data.Result
 import com.data.response.DataItemz
 import com.example.bottomnavyt.R
 import com.example.bottomnavyt.databinding.FragmentProfileBinding
+import com.ui.detailbooked.DetailBookedActivity
 
 class Profile : Fragment() {
 
@@ -94,7 +97,12 @@ class Profile : Fragment() {
     }
 
     private fun selectedBooked(data: DataItemz){
-        Toast.makeText(requireContext(), "Kamu memilih ${data.id}", Toast.LENGTH_SHORT).show()
+//        Toast.makeText(requireContext(), "Kamu memilih ${data.id}", Toast.LENGTH_SHORT).show()
+
+        Log.d("SelectedBooked", "Selected ID: ${data.id}")
+        val intent = Intent(requireContext(), DetailBookedActivity::class.java)
+        intent.putExtra(DetailBookedActivity.EXTRA_ID, data.id)
+        startActivity(intent)
     }
 
 

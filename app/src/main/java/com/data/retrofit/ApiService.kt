@@ -2,6 +2,7 @@ package com.data.retrofit
 
 import com.data.response.BlokResponse
 import com.data.response.BookedResponse
+import com.data.response.DetailBookedResponse
 import com.data.response.ListBookedResponse
 import com.data.response.LoginResponse
 import com.data.response.SeatStatusResponse
@@ -61,5 +62,10 @@ interface ApiService {
     suspend fun getListBook(
         @Path("id") id: Int
     ) : ListBookedResponse
+
+    @GET ("api/parkir/{id}")
+    suspend fun getDetailBooked(
+        @Path("id") id: Int
+    ) : DetailBookedResponse
 
 }

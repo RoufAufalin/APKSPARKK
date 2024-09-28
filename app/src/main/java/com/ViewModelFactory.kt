@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.data.Repository
 import com.di.Injection
 import com.ui.bookedform.FormViewModel
+import com.ui.detailbooked.DetailBookedViewModel
 import com.ui.listbooked.BookedViewModel
 import com.ui.login.LoginViewModel
 import com.ui.pilih.PilihViewModel
@@ -38,6 +39,10 @@ class ViewModelFactory private constructor(private val repository: Repository) :
 
             modelClass.isAssignableFrom(BookedViewModel::class.java) -> {
                 return BookedViewModel(repository) as T
+            }
+
+            modelClass.isAssignableFrom(DetailBookedViewModel::class.java) -> {
+                return DetailBookedViewModel(repository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
