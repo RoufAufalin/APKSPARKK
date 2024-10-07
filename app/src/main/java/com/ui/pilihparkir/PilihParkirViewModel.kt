@@ -23,7 +23,7 @@ class PilihParkirViewModel(val repository : Repository) : ViewModel() {
             _result.value = Result.Loading
 
             try {
-                val response = repository.getSlotBlok(1)
+                val response = repository.getSlotBlok(2)
                 _result.value = response
             } catch (e : Exception) {
                 _result.value = Result.Error(e, e.message ?: "Unknown error")

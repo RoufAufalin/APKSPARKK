@@ -12,6 +12,7 @@ import com.ViewModelFactory
 import com.data.Result
 import com.example.bottomnavyt.R
 import com.example.bottomnavyt.databinding.ActivitySlotBinding
+import com.ui.blok2pilihparkir.Blok2PilihParkirActivity
 import com.ui.pilih.PilihViewModel
 import com.ui.pilih.pilih
 import com.ui.pilihparkir.PilihParkirActivity
@@ -67,6 +68,13 @@ class slot : AppCompatActivity() {
         Tabebuya2?.setOnClickListener {
             val i = Intent(this, PilihParkirActivity::class.java).apply {
                 putExtra("loc", binding.parkir1.text.toString())
+            }
+            startActivity(i)
+        }
+
+        binding.blok2.setOnClickListener {
+            val i = Intent(this, Blok2PilihParkirActivity::class.java).apply {
+                putExtra("loc", binding.parkir2.text.toString())
             }
             startActivity(i)
         }

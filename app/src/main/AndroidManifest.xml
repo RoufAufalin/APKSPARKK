@@ -16,6 +16,9 @@
         android:theme="@style/Theme.BottomNavYT"
         tools:targetApi="31">
         <activity
+            android:name="com.ui.blok2pilihparkir.Blok2PilihParkirActivity"
+            android:exported="false" />
+        <activity
             android:name="com.ui.detailbooked.DetailBookedActivity"
             android:exported="false" />
         <activity

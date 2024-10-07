@@ -59,9 +59,6 @@ class BagianBelakang : Fragment() {
             }
         }
 
-
-
-
     }
 
 
@@ -163,6 +160,4 @@ class BagianBelakang : Fragment() {
         _binding = null
         super.onDestroy()
     }
-
-
 }
