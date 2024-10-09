@@ -72,7 +72,7 @@ class pilih : AppCompatActivity() {
             finish()
         }
 
-        pilihViewModel.getSlotParkir()
+        pilihViewModel.getSlotParkir(1)
 
         pilihViewModel.result.observe(this, Observer {result ->
             if (result != null) {
